@@ -25,7 +25,8 @@ const ListItem = ({
   chevronColor,
   roundAvatar,
   component,
-  fontFamily
+  fontFamily,
+  subtitleNumberOfLines
 }) => {
   let Component = onPress ? TouchableHighlight : View
   if (component) {
@@ -71,6 +72,7 @@ const ListItem = ({
             ]}>{title}</Text>
           {subtitle && (
             <Text
+              numberOfLines={subtitleNumberOfLines}
               style={[
                 styles.subtitle,
                 !leftIcon && {marginLeft: 10},
@@ -101,7 +103,8 @@ ListItem.defaultProps = {
   chevronColor: colors.grey4,
   rightIcon: {name: 'chevron-right'},
   hideChevron: false,
-  roundAvatar: false
+  roundAvatar: false,
+  subtitleNumberOfLines: null,
 }
 
 ListItem.propTypes = {
@@ -113,6 +116,7 @@ ListItem.propTypes = {
   underlayColor: PropTypes.string,
   subtitle: PropTypes.string,
   subtitleStyle: PropTypes.any,
+  subtitleNumberOfLines: PropTypes.number,
   containerStyle: PropTypes.any,
   wrapperStyle: PropTypes.any,
   titleStyle: PropTypes.any,
