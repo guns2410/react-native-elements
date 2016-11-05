@@ -26,7 +26,8 @@ const ListItem = ({
   roundAvatar,
   component,
   fontFamily,
-  subtitleNumberOfLines
+  titleProps,
+  subtitleProps,
 }) => {
   let Component = onPress ? TouchableHighlight : View
   if (component) {
@@ -69,17 +70,15 @@ const ListItem = ({
               titleStyle && titleStyle,
               !leftIcon && {marginLeft: 10},
               fontFamily && {fontFamily}
-            ]}>{title}</Text>
+            ]} {...titleProps}>{title}</Text>
           {subtitle && (
             <Text
-              numberOfLines={subtitleNumberOfLines}
-              ellipsizeMode="tail"
               style={[
                 styles.subtitle,
                 !leftIcon && {marginLeft: 10},
                 subtitleStyle && subtitleStyle,
                 fontFamily && {fontFamily}
-              ]}>{subtitle}</Text>
+              ]} {...subtitleProps}>{subtitle}</Text>
           )}
         </View>
         {
@@ -105,7 +104,8 @@ ListItem.defaultProps = {
   rightIcon: {name: 'chevron-right'},
   hideChevron: false,
   roundAvatar: false,
-  subtitleNumberOfLines: null,
+  titleProps: {},
+  subtitleProps: {},
 }
 
 ListItem.propTypes = {
@@ -117,13 +117,14 @@ ListItem.propTypes = {
   underlayColor: PropTypes.string,
   subtitle: PropTypes.string,
   subtitleStyle: PropTypes.any,
-  subtitleNumberOfLines: PropTypes.number,
   containerStyle: PropTypes.any,
   wrapperStyle: PropTypes.any,
   titleStyle: PropTypes.any,
   hideChevron: PropTypes.bool,
   chevronColor: PropTypes.string,
-  roundAvatar: PropTypes.bool
+  roundAvatar: PropTypes.bool,
+  titleProps: PropTypes.object,
+  subtitleProps: PropTypes.object,
 }
 
 styles = StyleSheet.create({
