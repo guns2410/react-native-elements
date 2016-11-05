@@ -73,6 +73,7 @@ const ListItem = ({
           {subtitle && (
             <Text
               numberOfLines={subtitleNumberOfLines}
+              ellipsizeMode="tail"
               style={[
                 styles.subtitle,
                 !leftIcon && {marginLeft: 10},
